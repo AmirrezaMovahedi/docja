@@ -1,0 +1,22 @@
+/* Header section */
+.header.container {
+    background: rgb(23,107,135);
+    background: linear-gradient(90deg, rgba(23,107,135,1) 0%, rgba(100,204,197,1) 50%, rgba(218,255,251,1) 100%);
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Information section styles */
+.about-us {
+    background-color: var(--color-secondary-light);
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 5rem;
+}
+.about-us-text {
+    color: var(--color-primary-dark);
+    font-size: 1.6rem;
+    line-height: 24px;
+    margin-right: 10px;
+}

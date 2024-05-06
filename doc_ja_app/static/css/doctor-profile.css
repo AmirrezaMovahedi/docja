@@ -1,0 +1,331 @@
+/* Doctor Profile Header section */
+.header.container {
+    background: rgb(4,54,74);
+    background: linear-gradient(90deg, rgba(4,54,74,1) 0%, rgba(23,107,135,1) 34%, rgba(100,204,197,1) 66%, rgba(218,255,251,1) 100%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+/* Doctor Profile section */
+.doctor-profile-section {
+    background-color: var(--color-secondary-light);
+    padding: 6rem 2rem 2rem 2rem;
+}
+.doctor-profile-title {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+    width: 400px;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.doctor-profile-title > img {
+    background-color: var(--color-secondary);
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+.doctor-profile-title .doctor-name {
+    width: 70%;
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+/* doctor profile texts styles */
+.texts-title {
+    color: var(--color-primary-dark);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 40px 0px 12px 0px;
+}
+.doctor-profile-texts > p {
+    font-size: 1.6rem;
+    line-height: 27px;
+}
+.reservation {
+    display: flex;
+    flex-direction: column;
+}
+.reservation-text {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+.reservation form {
+    max-width: 800px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.reservation form .divider {
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-primary-dark);
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reservation form .reservation-input {
+    accent-color: var(--color-primary);
+    transform: scale(1.7);
+    margin-bottom: 3px;
+}
+.reservation form label {
+    font-size: 1.7rem;
+    margin-right: 5px;
+}
+.reservation-submit-btn {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary-dark);
+    width: 150px;
+    margin-top: 30px;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+}
+.reservation-submit-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-secondary);
+}
+@media only screen and (max-width: 840px){
+    .doctor-profile-section h6 {
+        font-size: 2.1rem;
+    }
+    .doctor-profile-section p {
+        font-size: 1.4rem;
+    }
+    #form2 {
+        max-width: 400px;
+    }
+    .reservation form {
+        flex-wrap: wrap;
+    }
+    .reservation form .reservation-input {
+        accent-color: var(--color-primary);
+        transform: scale(1.6);
+    }
+    .reservation form label {
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (max-width: 570px){
+    .doctor-profile-title {
+        margin: auto;
+    }
+    .reservation {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    #form1 {
+        align-items: flex-start;
+    }
+    .reservation form {
+        flex-direction: column;
+        gap: 13px;
+    }
+    .reservation form .reservation-input {
+        accent-color: var(--color-primary);
+        transform: scale(1.6);
+    }
+    .reservation form label {
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (max-width: 440px){
+    .doctor-profile-title {
+        width: 300px;
+    }
+    .doctor-profile-section h6 {
+        font-size: 1.9rem;
+    }
+    .doctor-profile-section p {
+        font-size: 1.3rem;
+    }
+    .doctor-profile-title > img {
+        width: 50px;
+        height: 50px;
+    }
+    .doctor-profile-title .doctor-name {
+        font-size: 2.2rem;
+    }
+    .reservation {
+        display: flex;
+        flex-direction: row;
+    }
+    .reservation form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .reservation form label {
+        font-size: 1.5rem;
+    }
+    .comment-section .comment-section-title {
+        font-size: 2rem;
+    }
+    .comment-section .form {
+        padding: 2rem;
+    }
+    .comment-section .form .input,#text-area {
+        width: 90%;
+    }
+}
+/* comment section */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment-section-title {
+    color: var(--color-primary-dark);
+    margin: 3rem 0px;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+.form {
+    border: 2px solid var(--color-primary-dark);
+    border-radius: 10px;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.input {
+    background-color: var(--color-bg-input);
+    border: 2px solid var(--color-primary-dark);
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    outline: none;
+}
+.input:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-secondary);
+}
+.input:focus {
+    border: 2px solid var(--color-secondary);
+}
+#text-area {
+    border: 2px solid var(--color-primary-dark);
+    background-color: var(--color-bg-input);
+    resize: none;
+    outline: none;
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+}
+#text-area:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-secondary);
+}
+#text-area:focus {
+    border: 2px solid var(--color-secondary);
+}
+.comment-btn {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary-dark);
+    border-radius: 25px;
+    padding: 1rem 4rem;
+}
+.comment-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-secondary);
+}
+/* like section styles */
+.like-section {
+    background-color: var(--color-secondary-light);
+    box-shadow: 0px 0px 55px 0px rgba(4,54,74,1) inset;
+    width: 70%;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 30px auto 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+.like-section-text {
+    color: var(--color-primary-dark);
+    line-height: 25px;
+    max-width: 60%;
+}
+.like-section span {
+    color: var(--color-primary-dark);
+    font-size: 18px;
+    width: 70px;
+    text-align: center;
+}
+.like-section span  i {
+    padding: 8px;
+}
+.like-section span  i:hover {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+@media only screen and (max-width: 840px){
+    .like-section span {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 475px){
+    .like-section {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .like-section-text {
+        max-width: 90%;
+        text-align: center;
+    }
+}
+/* Previous Comments Section styles */
+.previous-comments-title {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 30px 0px 12px 0px;
+    padding: 2rem;
+    border-radius: 8px;
+}
+.comment {
+    border-bottom: 2px solid var(--color-primary-dark);
+    padding: 2rem 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.comment:last-child {
+    border-bottom: none;
+}
+.comment-username {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+}
+.comment-text {
+    font-size: 1.6rem;
+    line-height: 27px;
+    margin: 10px 15px;
+}
+.comment-date {
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+    margin-right: 15px;
+}

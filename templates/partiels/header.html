@@ -1,0 +1,50 @@
+{% load static %}
+
+        <header class="header container">
+            <div id="header-menu">
+                <ul id="header-menu-list">
+                    <li class="header-menu__item">
+                        <a href="{% url 'doc_ja_app:profile' %}"><img src="{% if user.is_authenticated or profile == True %} {% if user.doctor %} {{ user.doctor.photo.url }} {% else %} {{ user.web_user.photo.url }} {% endif %} {% else %} {% static 'Assets/Images/profile-circle.png' %} {% endif %}" alt="profile-image"></a>
+                    </li>
+                    <li class="header-menu__item a1"><a href="{% url 'doc_ja_app:doctor_list' %}"><i class="fa-solid fa-house"></i>صفحه اصلی</a></li>
+                    <li class="header-menu__item a2"><a href="{% url 'doc_ja_app:about_us' %}"><i class="fa-solid fa-circle-info"></i>درباره ما</a></li>
+                    <li class="header-menu__item a2 dropdown">
+                        <button class="dropbtn">ورود/ثبت نام<i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-content">
+                            <li><a href="{% url 'doc_ja_app:login' %}"  class="dropdown-item">ورود</a></li>
+                            <li><a href="{% url 'doc_ja_app:web_user_register' %}"  class="dropdown-item">ثبت نام کاربر</a></li>
+                            <li><a href="{% url 'doc_ja_app:doctor_register' %}"  class="dropdown-item">ثبت نام پزشک</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="category-section">
+                <form action="{% url 'doc_ja_app:doctor_list' %}" class="category-form" method="post">
+                    <label for="category" class="category-label">.: دسته بندی :.</label>
+                    <select name="field" id="category">
+                        <option value="all" class="select-item">همه</option>
+                        <option value="پزشک عمومی" class="select-item">پزشک عمومی</option>
+                        <option value="متخصص زنان" class="select-item">متخصص زنان</option>
+                        <option value="متخصص مغز و اعصاب" class="select-item">متخصص مغز و اعصاب</option>
+                        <option value="متخصص مامایی" class="select-item">متخصص مامایی</option>
+                        <option value="چشم پزشک" class="select-item">چشم پزشک</option>
+                        <option value="متخصص گوش،حلق،بینی" class="select-item">متخصص گوش،حلق و بینی</option>
+                        <option value="متخصص زیبایی" class="select-item">متخصص زیبایی</option>
+                        <option value="دندانپزشک" class="select-item">دندانپزشک</option>
+                        <option value="جراخ پلاستیک" class="select-item">جراح پلاستیک</option>
+                        <option value="متخصص اطفال" class="select-item">متخصص اطفال</option>
+                        <option value="متخصص قلب" class="select-item">متخصص قلب</option>
+                        <option value="متخصص داخلی" class="select-item">متخصص داخلی</option>
+                        <option value="متخصص غدد" class="select-item">متخصص غدد</option>
+
+
+                    </select>
+                </form>
+            </div>
+            <div class="search-section">
+                <form action="{% url 'doc_ja_app:search' %}" id="search-menu" autocomplete="off">
+                    <button type="submit" class="search-menu-submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input name="query" type="search" placeholder="جستجو ..." class="search-bar">
+                </form>
+            </div>
+        </header>

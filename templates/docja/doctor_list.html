@@ -1,0 +1,70 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %} DOC JA{% endblock %}
+
+{% block content %}
+
+    <section class="image-section container">
+            <div class="hidden"></div>
+            <div class="logo-section">
+                <h1>دکترجا</h1>
+                <img src="{% static "Assets/Images/IMG_20240416_181701_480.png" %}" alt="background-image">
+                <div class="shoar">
+                    <p>بهبودی شما آرزوی ماست</p>
+                    <p id="shoar-last">سلامت شما هدف ماست</p>
+                </div>
+            </div>
+        </section>
+    <div class="doctors-list-title container">
+        <h6 id="title">لیست پزشکان</h6>
+    </div>
+
+
+       <section class="doctors-list-section container" id="ttt">
+            {% for doctor in doctors %}
+            <div class="doctors-list-item">
+                <span class="doctors-list-item-header">
+                    <img src="{{ doctor.photo.url }}" alt="profile-image">
+                    <p class="doctor-name"> {{ doctor.user.first_name }} </p>
+                </span>
+                <p class="dotcor-expertise">{{ doctor.expert }}</p>
+                <span class="likes">
+                    <p>تعداد لایک ها</p>
+                    <span>{{ doctor.likes.count }}<i class="fa-regular fa-thumbs-up"></i></span>
+                </span>
+                <a href="{% url 'doc_ja_app:doctor_detail' doctor.id %}"><button class="more-btn">رزرو و اطلاعات بیشتر</button></a>
+            </div>
+            {% endfor %}
+
+        </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+$(".category-form").on("change", function(){
+  var selectedValue = $('#category').val();
+  console.log(selectedValue);
+
+
+  $.ajax({
+    url : "{% url 'doc_ja_app:doctor_list' %}",
+    type : "GET",
+      data : {'expert': selectedValue},
+    dataType : "html",
+      success : function (data){
+
+           $('#ttt').html(data);
+
+
+      }
+
+  });
+});
+</script>
+
+{% endblock %}
+
+
+

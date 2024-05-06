@@ -1,0 +1,46 @@
+
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block head %} <link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock %}
+{% block title %}Sign Up{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="signup-conatainer">
+            <div class="signup-section">
+                <form action="{% url 'doc_ja_app:web_user_register' %}" autocomplete="off" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label class="sabtenam">ثبت نام کاربر</label>
+                    <input name="first_name" type="text" class="signup-input" placeholder="نام و نام خانوادگی" required minlength="6" maxlength="30">
+                    <input name="username" type="text" class="signup-input" placeholder="نام کاربردی" required minlength="3" maxlength="15">
+                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور" required minlength="4" maxlength="15">
+                    <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور" required minlength="4" maxlength="15">
+                    <input name="phone" type="tel" class="signup-input" placeholder="شماره تلفن همراه " required pattern="[0][9][0-9]{9}" maxlength="11">
+                    <input name="email" type="email" class="signup-input" placeholder="ایمیل" required>
+                    <!-- custom choose file btn -->
+                    <input name="photo" type="file" id="actual-btn" hidden required accept="image/png, image/jpeg">
+                    <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
+                    <button type="submit" class="btn">ثبت</button>
+                </form>
+                    {% if user_form.errors %}
+        {% for field in user_form %}
+            {% if field.errors %}
+                 {% for error in field.errors %}
+                     <p class="field-error">{{ field.label }} : {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if user_form.non_field_errors %}
+        <p class="field-error">{{ form.non_field_errors }}</p>
+    {% endif %}
+            </div>
+        </div>
+
+
+
+{% endblock %}

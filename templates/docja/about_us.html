@@ -1,0 +1,30 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href={% static 'css/about-us.css' %}>
+</head>
+<body>
+{% include "partiels/header2.html" %}
+{% include "partiels/navigation.html" %}
+
+
+        <section class="about-us container">
+            <p class="about-us-text">سلام و خوش آمدید به سایت رزرو وقت پزشک آنلاین ما، دکترجا!<br><br> ما با افتخار به شما خدماتی بی‌نظیر در زمینه رزرو وقت پزشک آنلاین ارائه می‌دهیم. ماموریت ما این است که ارتباط بین پزشکان با بیماران را ساده و موثر کنیم تا شما بتوانید به راحتی و با اطمینان وقت خود را با پزشکان متخصص رزرو کنید. <br><br> امیدواریم که تجربه شما با سایت ما لذت بخش و مفید باشد. با ما همراه باشید، تا به شما کمک کنیم در بهبود و حفظ سلامتی خود موفق باشید! <br>برای راحتی شما عزیزان راه های ارتباطی در این بخش قرار داده شده اند. <br><br> </p>
+            <span class="footer-icons-container">
+                <i class="fa-brands fa-instagram footer-icon"></i>
+                <i class="fa-brands fa-whatsapp footer-icon"></i>
+                <i class="fa-brands fa-x-twitter footer-icon"></i>
+                <i class="fa-solid fa-phone footer-icon"></i>
+                <i class="fa-solid fa-location-dot footer-icon"></i>
+            </span>
+        </section>
+
+</body>
+</html>

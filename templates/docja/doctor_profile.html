@@ -1,0 +1,35 @@
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block title %} profile{% endblock %}
+{% block head %} <link rel="stylesheet" href={% static 'css/user-doctor-information.css' %}> {% endblock %}
+{% block content %}
+        <section class="information-container container">
+            <div class="information-section">
+                <span class="information-title">نام و نام خانوادگی</span>
+                <p class="information-text">{{ own_user.user.first_name }}</p>
+                <span class="information-title">نام کاربردی</span>
+                <p class="information-text">{{ own_user.user.username }}</p>
+                <span class="information-title">رمز عبور</span>
+                <p class="information-text">********</p>
+                <span class="information-title">شماره نظام پزشکی</span>
+                <p class="information-text">{{ own_user.mc_number }}</p>
+                <span class="information-title">شماره تلفن همراه</span>
+                <p class="information-text">{{ own_user.phone }}</p>
+                <span class="information-title">ایمیل</span>
+                <p class="information-text">{{ own_user.user.email }}</p>
+                <span class="information-title">آدرس مطب</span>
+                <p class="information-text">{{ own_user.address }}</p>
+                <span class="information-title">تخصص</span>
+                <p class="information-text">{{ own_user.expert }}</p>
+                <span class="information-title">توضیحات</span>
+                <p class="information-text">{{ own_user.description }}</p>
+                <div class="button-section">
+                    <a href="{% url 'doc_ja_app:doctor_edit' %}"><button class="btn edit-btn">ویرایش اطلاعات</button></a>
+                    <a href="{% url 'doc_ja_app:logout' %}"><button class="btn logout-btn">خروج از اکانت</button></a>
+                </div>
+            </div>
+        </section>
+
+
+{% endblock %}

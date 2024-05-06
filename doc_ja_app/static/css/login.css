@@ -1,0 +1,120 @@
+/* login header section */
+.header.container {
+    background: rgb(23,107,135);
+    background: linear-gradient(90deg, rgba(23,107,135,1) 0%, rgba(100,204,197,1) 50%, rgba(218,255,251,1) 100%);
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+/* login section */
+.login-conatainer {
+    max-width: 1200px;
+    margin: 50px auto;
+}
+.login-section {
+    width: 70%;
+    margin: 0px auto;
+}
+.login-section form {
+    background-color: var(--color-secondary-light);
+    width: 100%;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 20px;
+}
+.login-section .vorod {
+    font-size: 3rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+.login-section .forget-pass-section {
+    width: 140px;
+    margin: 0px auto;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    padding: 3px;
+}
+.login-section .forget-pass {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+.forget-pass-section:hover {
+    cursor: pointer;
+}
+.forget-pass-section:hover .forget-pass {
+    color: var(--color-secondary);
+}
+.login-input {
+    display: block;
+    outline: none;
+    background-color: var(--color-secondary-light);
+    border-width: 0px 0px 2px 0px;
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    width: 350px;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin: 4rem auto;
+}
+.login-input:focus {
+    border-color: var(--color-secondary);
+}
+.btn {
+    width: 130px;
+    border-radius: 8px;
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    padding: 1rem 2rem;
+}
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+.red {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+}
+@media only screen and (max-width: 640px){
+    .login-section {
+        width: 90%;
+    }
+    .login-section form {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-input {
+        width: 300px;
+        margin: 2.3rem auto 0px auto;
+    }
+    .login-section .forget-pass-section {
+        margin-top: 2.5rem;
+    }
+    .btn {
+        margin: 0px auto;
+    }
+    .red {
+        margin-top: 10px;
+    }
+    .header.container {
+        width: 90%;
+    }
+    #header-menu-list {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+@media only screen and (max-width: 429px){
+    .login-input {
+        width: 250px;
+    }
+}

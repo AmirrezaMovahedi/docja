@@ -1,0 +1,48 @@
+
+
+
+
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block head %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endblock %}
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+
+<div class="login-conatainer">
+            <div class="login-section">
+                <form action="#" autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <label class="vorod">ورود</label>
+                    <input name="username" type="text" class="login-input" id="user-name" placeholder="نام کاربردی" required minlength="3" maxlength="15">
+                    <input name="password" type="text" class="login-input" id="user-pass" placeholder="رمز عبور" required minlength="4" maxlength="15">
+                    <div class="forget-pass-section">
+                        <a href="{% url 'doc_ja_app:password_reset' %}" class="forget-pass">فراموشی رمز عبور</a>
+                    </div>
+                    <button type="submit" class="btn">ثبت</button>
+                    <button type="reset" class="btn red">حذف</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        {% if form.errors %}
+        {% for field in form %}
+            {% if field.errors %}
+                 {% for error in field.errors %}
+                     <p>{{ field.label }} : {{ error }}</p>
+
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+
+
+
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+{% block head %} <link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock %}
+{% block content %}
+
+            <div class="signup-conatainer">
+            <div class="signup-section">
+                <form action="{% url 'doc_ja_app:doctor_register' %}" autocomplete="off" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label class="sabtenam">ثبت نام پزشک</label>
+                    <input name="first_name" type="text" class="signup-input" placeholder="نام و نام خانوادگی" required minlength="6" maxlength="30">
+                    <input name="username" type="text" class="signup-input" placeholder="نام کاربردی" required minlength="3" maxlength="15">
+                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور" required minlength="4" maxlength="15">
+                    <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور" required minlength="4" maxlength="15">
+                        <select name="expert" id="category">
+                        <option value="" class="select-item" selected disabled>انتخاب تخصص</option>
+                        <option value="پزشک عمومی" class="select-item">پزشک عمومی</option>
+                        <option value="متخصص زنان" class="select-item">متخصص زنان</option>
+                        <option value="متخصص مغز و اعصاب" class="select-item">متخصص مغز و اعصاب</option>
+                        <option value="متخصص مامایی" class="select-item">متخصص مامایی</option>
+                        <option value="چشم پزشک" class="select-item">چشم پزشک</option>
+                        <option value="متخصص گوش،حلق،بینی" class="select-item">متخصص گوش،حلق و بینی</option>
+                        <option value="متخصص زیبایی" class="select-item">متخصص زیبایی</option>
+                        <option value="دندانپزشک" class="select-item">دندانپزشک</option>
+                        <option value="جراخ پلاستیک" class="select-item">جراح پلاستیک</option>
+                        <option value="متخصص اطفال" class="select-item">متخصص اطفال</option>
+                        <option value="متخصص قلب" class="select-item">متخصص قلب</option>
+                        <option value="متخصص داخلی" class="select-item">متخصص داخلی</option>
+                        <option value="متخصص غدد" class="select-item">متخصص غدد</option>
+                    </select>
+                    <input name="mc_number" type="text" class="signup-input" placeholder="شماره نظام پزشکی" required minlength="5" maxlength="20">
+                    <input name="phone" type="tel" class="signup-input" placeholder="شماره تلفن همراه " required pattern="[0][9][0-9]{9}" maxlength="11">
+                    <input name="email" type="email" class="signup-input" placeholder="ایمیل" required>
+                    <input name="address" type="text" class="signup-input" placeholder="آدرس مطب" required>
+                    <label for="doctor-description" class="textarea-lable">در کادر زیر خلاصه ای از تحصیلات، مدارک و سابقه کاری خود را وارد کنید :</label>
+                    <textarea name="description" id="doctor-description" placeholder="توضیحات ..." cols="30" rows="10"></textarea>
+                    <!-- custom choose file btn -->
+                    <input name="photo" type="file" id="actual-btn" hidden required accept="image/png, image/jpeg">
+                    <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
+                    <button type="submit" class="btn">ثبت</button>
+                </form>
+                {% if user_form.errors %}
+        {% for field in user_form %}
+            {% if field.errors %}
+                 {% for error in field.errors %}
+                     <p class="field-error">{{ field.label }} : {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if user_form.non_field_errors %}
+        <p class="field-error">{{ form.non_field_errors }}</p>
+    {% endif %}
+            </div>
+        </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+/* Header section */
+.header.container {
+    background: rgb(23,107,135);
+    background: linear-gradient(90deg, rgba(23,107,135,1) 0%, rgba(100,204,197,1) 50%, rgba(218,255,251,1) 100%);
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+/* Information section styles */
+.information-container {
+    background-color: var(--color-secondary);
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 5rem 0px;
+}
+.information-section {
+    background-color: var(--color-secondary-light);
+    width: 80%;
+    margin: 0px auto;
+    padding: 1rem;
+    box-shadow: 0px 0px 25px 8px var(--color-primary-dark);
+    border-radius: 20px;
+}
+.information-title {
+    color: var(--color-primary-dark);
+    display: inline-block;
+    font-size: 2.2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.information-text {
+    font-size: 1.6rem;
+    line-height: 24px;
+    margin-right: 10px;
+}
+.button-section {
+    width: 300px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.btn {
+    width: 130px;
+    border-radius: 8px;
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    padding: 1rem 2rem;
+}
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+.logout-btn {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+}
+@media only screen and (max-width: 470px){
+    .button-section {
+        flex-direction: column;
+        width: 200px;
+    }
+}

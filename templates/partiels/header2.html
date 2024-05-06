@@ -1,0 +1,22 @@
+{% load static %}
+
+
+        <header class="header container">
+            <div id="header-menu">
+                <ul id="header-menu-list">
+                    <li class="header-menu__item">
+                        <a href={% url 'doc_ja_app:profile' %}><img src="{% if user.is_authenticated or profile == True %} {% if user.doctor %} {{ user.doctor.photo.url }} {% else %} {{ user.web_user.photo.url }} {% endif %} {% else %} {% static 'Assets/Images/profile-circle.png' %} {% endif %}" alt="profile-image"></a>
+                    </li>
+                    <li class="header-menu__item a1"><a href={% url 'doc_ja_app:doctor_list' %}><i class="fa-solid fa-house"></i>صفحه اصلی</a></li>
+                    <li class="header-menu__item a2"><a href='{% url 'doc_ja_app:about_us' %}'><i class="fa-solid fa-circle-info"></i>درباره ما</a></li>
+                    <li class="header-menu__item a2 dropdown">
+                        <button class="dropbtn">ورود/ثبت نام<i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-content">
+                            <li><a href={% url 'doc_ja_app:login' %}  class="dropdown-item">ورود</a></li>
+                            <li><a href={% url 'doc_ja_app:web_user_register' %}  class="dropdown-item">ثبت نام کاربر</a></li>
+                            <li><a href={% url 'doc_ja_app:doctor_register' %}  class="dropdown-item">ثبت نام پزشک</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>

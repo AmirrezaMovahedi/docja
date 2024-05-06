@@ -1,0 +1,62 @@
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block title %}Doctor Information Edit{% endblock %}
+{% block head %} <link rel="stylesheet" href={% static 'css/user-doctor-information-edit.css' %}> {% endblock %}
+
+{% block content %}
+
+        <div class="information-conatainer">
+             <div class="information-section">
+                <form action='{% url 'doc_ja_app:doctor_edit' %}' autocomplete="off" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                    <label class="sabtenam">ویرایش اطلاعات پزشک</label>
+                    <input name="first_name" type="text" class="signup-input" placeholder="نام و نام خانوادگی" required minlength="6" maxlength="30" readonly value="{{ user_form.first_name.value }}">
+                    <input name="username" type="text" class="signup-input" placeholder="نام کاربردی" required minlength="3" maxlength="15" value="{{ user_form.username.value }}">
+                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور" required minlength="4" maxlength="15">                        <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور" required minlength="4" maxlength="15">
+                    <input name="mc_number" type="text" class="signup-input" placeholder="شماره نظام پزشکی" required minlength="5" readonly value="{{ doctor_form.mc_number.value }}">
+                    <input name="phone" type="tel" class="signup-input" placeholder="شماره تلفن همراه " required pattern="[0][9][0-9]{9}" maxlength="11" value="{{ doctor_form.phone.value }}">
+                    <input name="email" type="email" class="signup-input" placeholder="ایمیل" required value="{{ user_form.email.value }}">
+                    <input name="address" type="text" class="signup-input" placeholder="آدرس مطب" required value="{{ doctor_form.address.value }}">
+                                            <select name="expert" id="category" disabled>
+                        <option value="پزشک عمومی" {% if user.doctor.expert == 'پزشک عمومی' %}selected{% endif %} class="select-item">پزشک عمومی</option>
+                        <option value="متخصص زنان" {% if user.doctor.expert == 'متخصص زنان' %}selected{% endif %} class="select-item">متخصص زنان</option>
+                        <option value="متخصص مغز و اعصاب" {% if user.doctor.expert == 'متخصص مغز و اعصاب' %}selected{% endif %}  class="select-item">متخصص مغز و اعصاب</option>
+                        <option value="متخصص مامایی" {% if user.doctor.expert == 'متخصص مامایی' %}selected{% endif %} class="select-item">متخصص مامایی</option>
+                        <option value="چشم پزشک" {% if user.doctor.expert == 'چشم پزشک' %}selected{% endif %} class="select-item">چشم پزشک</option>
+                        <option value="متخصص گوش،حلق،بینی" {% if user.doctor.expert == 'متخصص گوش،حلق،بینی' %}selected{% endif %} class="select-item">متخصص گوش،حلق و بینی</option>
+                        <option value="متخصص زیبایی" class="select-item" {% if user.doctor.expert == 'متخصص زیبایی' %}selected{% endif %}>متخصص زیبایی</option>
+                        <option value="دندانپزشک" {% if user.doctor.expert == 'دندانپزشک' %}selected{% endif %} class="select-item">دندانپزشک</option>
+                        <option value="جراخ پلاستیک" {% if user.doctor.expert == 'جراخ پلاستیک' %}selected{% endif %} class="select-item">جراح پلاستیک</option>
+                        <option value="متخصص اطفال" {% if user.doctor.expert == 'متخصص اطفال' %}selected{% endif %} class="select-item">متخصص اطفال</option>
+                        <option value="متخصص قلب" {% if user.doctor.expert == 'متخصص قلب' %}selected{% endif %} class="select-item">متخصص قلب</option>
+                        <option value="متخصص داخلی" {% if user.doctor.expert == 'متخصص داخلی' %}selected{% endif %} class="select-item">متخصص داخلی</option>
+                        <option value="متخصص غدد" {% if user.doctor.expert == 'متخصص غدد' %}selected{% endif %} class="select-item">متخصص غدد</option>
+                    </select>
+                    <label for="doctor-description" class="textarea-lable">در کادر زیر خلاصه ای از تحصیلات، مدارک و سابقه کاری خود را وارد کنید :</label>
+                    <textarea name="description" id="doctor-description" placeholder="توضیحات ..." cols="30" rows="10">{{ doctor_form.description.value }}</textarea>
+                    <!-- custom choose file btn -->
+                    <input name="photo" type="file" id="actual-btn" hidden required accept="image/png, image/jpeg">                        <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
+                    <button type="submit" class="btn">ثبت</button>
+                </form>
+                                {% if user_form.errors %}
+        {% for field in user_form %}
+            {% if field.errors %}
+                 {% for error in field.errors %}
+                     <p class="field-error">{{ field.label }} : {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if user_form.non_field_errors %}
+        <p class="field-error">{{ form.non_field_errors }}</p>
+    {% endif %}
+            </div>
+        </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}

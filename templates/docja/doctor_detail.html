@@ -1,0 +1,201 @@
+{% extends 'parent/base2.html' %}
+{% load static %}
+
+{% block head %} <link rel="stylesheet" href="{% static 'css/doctor-profile.css' %}"> {% endblock %}
+
+{% block title %} Doctor Profile {% endblock %}
+
+{% block content %}
+
+        <section class="doctor-profile-section container">
+            <div class="doctor-profile-title">
+                <img src="{{ doctor.photo.url }}" alt="post-image">
+                <h3 class="doctor-name">{{ doctor.user.first_name }}</h3>
+            </div>
+            <div class="doctor-profile-texts">
+                <h6 class="texts-title">توضیحات</h6>
+                <p class="doctor-profile-description">
+                    {{ doctor.description }}
+                </p>
+                <h6 class="texts-title">آدرس مطب</h6>
+                <p class="address">
+                    {{ doctor.address }}
+                </p>
+                <h6 class="texts-title">رزرو وقت</h6>
+                <p class="reservation-text">روز و ساعت مورد نظر خود جهت رزرو وقت را انتخاب کنید :</p>
+                <div class="reservation">
+                    <form action="#" autocomplete="off" id="form1">
+                        <span class="divider">
+                            <input type="radio" name="days" value="شنبه" class="reservation-input" id="radio-0">
+                            <label for="radio-0">شنبه</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="days" value="یک شنبه" class="reservation-input" id="radio-1">
+                            <label for="radio-1">یک شنبه</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="days" value="دوشنبه" class="reservation-input" id="radio-2">
+                            <label for="radio-2">دوشنبه</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="days" value="سه شنبه" class="reservation-input" id="radio-3">
+                            <label for="radio-3">سه شنبه</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="days" value="چهارشنبه" class="reservation-input" id="radio-4">
+                            <label for="radio-4">چهارشنبه</label>
+                        </span>
+                    </form>
+                    <form action="#" autocomplete="off" id="form2">
+                        <span class="divider">
+                            <input type="radio" name="hours" value="91" class="reservation-input" id="radio-91">
+                            <label for="radio-91">09:00</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="92" class="reservation-input" id="radio-92">
+                            <label for="radio-92">09:30</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="101" class="reservation-input" id="radio-101">
+                            <label for="radio-101">10:00</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="102" class="reservation-input" id="radio-102">
+                            <label for="radio-102">10:30</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="111" class="reservation-input" id="radio-111">
+                            <label for="radio-111">11:00</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="112" class="reservation-input" id="radio-112">
+                            <label for="radio-112">11:30</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="121" class="reservation-input" id="radio-121">
+                            <label for="radio-121">12:00</label>
+                        </span>
+                        <span class="divider">
+                            <input type="radio" name="hours" value="122" class="reservation-input" id="radio-122">
+                            <label for="radio-122">12:30</label>
+                        </span>
+                        <button data-doctor-id="{{ doctor.id }}" type="submit" class="reservation-submit-btn">ثبت رزور وقت</button>
+                    </form>
+                </div>
+            </div>
+            <div class="comment-section">
+                <h2 class="comment-section-title">ارسال نظر</h2>
+                <form action="{% url 'doc_ja_app:send_comment' doctor.id %}" class="form" autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <input name="name" type="text" class="input" placeholder="نام و نام خانوادگی" required minlength="3" maxlength="25">
+                    <input name="email" type="email" class="input "placeholder="ایمیل" required>
+                    <textarea name="message" id="text-area" cols="25" rows="10" placeholder="نظرات ..." required></textarea>
+                    <button type="submit" class="comment-btn">ارسال</button>
+                </form>
+            </div>
+            <div class="like-section" data-doctor-id="{{ doctor.id }}">
+                <p class="like-section-text">اگر از این پزشک راضی هستید، پروفایل پزشک را لایک کنید :</p>
+                <span ><span id="like_count">{{ doctor.likes.count }}</span><i class="fa-regular fa-thumbs-up" id="like_button"></i></span>
+            </div>
+            <div class="previous-comments-section">
+                <h6 class="previous-comments-title">نظرات</h6>
+                {% for comment in comments %}
+                <div class="comment">
+                    <p class="comment-username">{{ comment.name }}</p>
+                    <p class="comment-text">{{ comment.message }}</p>
+                    <span class="comment-date">{{ comment.created }}</span>
+                </div>
+                    {% empty %}
+                    <p>کامنتی وجود ندارد</p>
+                {% endfor %}
+
+            </div>
+        </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function (){
+        $('#like_button').click(function (){
+            var doctor_id = $('.like-section').data('doctor-id');
+            var button = $(this);
+            var csrftoken = '{{csrf_token}}';
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/docja/doctor_like/',
+                data: {'doctor_id': doctor_id, 'csrfmiddlewaretoken': csrftoken },
+                success: function(data) {
+
+                    $('#like_count').text(data.like_count);
+                },
+            });
+        });
+
+
+
+        $('.reservation-submit-btn').click(function (){
+            console.log('ok');
+            var doctor_id = $('.reservation-submit-btn').data('doctor-id');
+            var button = $(this);
+            var csrftoken = '{{csrf_token}}';
+            var day;
+            var hour;
+
+            for( let i=0; i<=4; i++){
+                 let idd = "radio-" + i.toString();
+                const radio = document.getElementById(idd)
+                if(radio.checked){
+                    day = radio.value;
+                }
+            }
+            const numbers = [91,92,101,102,111,112,121,122]
+            for( let x=0; x < numbers.length; x++){
+                 let idd = "radio-" + numbers[x].toString();
+                const radio = document.getElementById(idd)
+                if(radio.checked){
+                    hour = radio.value;
+                }
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/docja/reservation/',
+                data: {'hour': hour,'day': day,'doctor_id': doctor_id, 'csrfmiddlewaretoken': csrftoken },
+                dataType: "json",
+                success: function(data) {
+
+                    if (data.status){
+                        alert('با موفقیت رزرو شد')
+                    }
+                    else{
+                        alert('زمان انتخابی پر است')
+                    }
+                },
+            });
+        });
+
+
+
+
+
+
+
+
+
+    });
+
+
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
