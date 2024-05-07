@@ -3,7 +3,7 @@
 
 *.log
 *.pdf
-*.png
+
 
 # IDE
 .idea/ # PyCharm settings
