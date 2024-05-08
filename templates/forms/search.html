@@ -23,8 +23,6 @@
                     <span>{{ doctor.likes.count }}<i class="fa-regular fa-thumbs-up"></i></span>
                 </span>
                 <a href="{% url 'doc_ja_app:doctor_detail' doctor.id %}"><button class="more-btn">رزرو و اطلاعات بیشتر</button></a>
-                {% empty %}
-                    <p>نتیجه ای یافت نشد </p>
             </div>
 
             {% endfor %}
