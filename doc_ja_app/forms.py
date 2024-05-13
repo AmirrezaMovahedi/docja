@@ -74,8 +74,8 @@ class CommentForm(forms.ModelForm):
 
 
 class UserEdit(forms.ModelForm):
-    password = forms.CharField(max_length=20, widget=forms.PasswordInput)
-    password2 = forms.CharField(max_length=20, widget=forms.PasswordInput)
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(max_length=20, widget=forms.PasswordInput, required=False)
 
     class Meta:
         model = User

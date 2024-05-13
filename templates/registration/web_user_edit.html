@@ -14,12 +14,12 @@
                     <label class="sabtenam">ویرایش اطلاعات کاربر</label>
                     <input name="first_name" type="text" class="signup-input" placeholder="نام و نام خانوادگی" required minlength="6" maxlength="30" readonly value="{{ user_form.first_name.value }}">
                     <input name='username' type="text" class="signup-input" placeholder="نام کاربری" required minlength="3" maxlength="15" value="{{ user_form.username.value }}">
-                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور" required minlength="4" maxlength="15">
-                    <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور" required minlength="4" maxlength="15">
+                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور"  minlength="4" maxlength="15">
+                    <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور"  minlength="4" maxlength="15">
                     <input name="phone" type="tel" class="signup-input" placeholder="شماره تلفن همراه" required pattern="[0][9][0-9]{9}" maxlength="11" value="{{ web_user_form.phone.value }}">
                     <input name="email" type="email" class="signup-input" placeholder="ایمیل" required value="{{ user_form.email.value }}">
                     <!-- custom choose file btn -->
-                    <input name="photo" type="file" id="actual-btn" hidden required accept="image/png, image/jpeg">
+                    <input name="photo" type="file" id="actual-btn" hidden  accept="image/png, image/jpeg" value="{{ web_user_form.photo.value }}">
                     <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
                     <button type="submit" class="btn">ثبت</button>
                 </form>

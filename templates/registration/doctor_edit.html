@@ -13,7 +13,7 @@
                     <label class="sabtenam">ویرایش اطلاعات پزشک</label>
                     <input name="first_name" type="text" class="signup-input" placeholder="نام و نام خانوادگی" required minlength="6" maxlength="30" readonly value="{{ user_form.first_name.value }}">
                     <input name="username" type="text" class="signup-input" placeholder="نام کاربردی" required minlength="3" maxlength="15" value="{{ user_form.username.value }}">
-                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور" required minlength="4" maxlength="15">                        <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور" required minlength="4" maxlength="15">
+                    <input name="password" type="password" class="signup-input" placeholder="رمز عبور"  minlength="4" maxlength="15">                        <input name="password2" type="password" class="signup-input" placeholder="تکرار رمز عبور"  minlength="4" maxlength="15" >
                     <input name="mc_number" type="text" class="signup-input" placeholder="شماره نظام پزشکی" required minlength="5" readonly value="{{ doctor_form.mc_number.value }}">
                     <input name="phone" type="tel" class="signup-input" placeholder="شماره تلفن همراه " required pattern="[0][9][0-9]{9}" maxlength="11" value="{{ doctor_form.phone.value }}">
                     <input name="email" type="email" class="signup-input" placeholder="ایمیل" required value="{{ user_form.email.value }}">
@@ -36,7 +36,7 @@
                     <label for="doctor-description" class="textarea-lable">در کادر زیر خلاصه ای از تحصیلات، مدارک و سابقه کاری خود را وارد کنید :</label>
                     <textarea name="description" id="doctor-description" placeholder="توضیحات ..." cols="30" rows="10">{{ doctor_form.description.value }}</textarea>
                     <!-- custom choose file btn -->
-                    <input name="photo" type="file" id="actual-btn" hidden required accept="image/png, image/jpeg">                        <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
+                    <input name="photo" type="file" id="actual-btn" hidden  accept="image/png, image/jpeg" value="{{ doctor_form.photo.value }}">                        <label for="actual-btn" class="profile-image-input">عکس پروفایل</label>
                     <button type="submit" class="btn">ثبت</button>
                 </form>
                                 {% if user_form.errors %}

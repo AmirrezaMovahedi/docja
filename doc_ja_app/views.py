@@ -111,9 +111,9 @@ def doctor_account_edit_view(request):
 
             if doctor_form.is_valid and user_form.is_valid():
                 user = user_form.save(commit=False)
-                user.set_password(user_form.cleaned_data['password'])
+                if user_form.cleaned_data['password'] and user_form.cleaned_data['password2']:
+                    user.set_password(user_form.cleaned_data['password'])
                 user.save()
-                print(request.POST)
                 doctor_form.save()
 
                 return redirect('doc_ja_app:profile')
@@ -137,7 +137,8 @@ def web_user_account_edit_view(request):
 
             if web_user_form.is_valid and user_form.is_valid():
                 user = user_form.save(commit=False)
-                user.set_password(user_form.cleaned_data['password'])
+                if user_form.cleaned_data['password'] and user_form.cleaned_data['password2']:
+                    user.set_password(user_form.cleaned_data['password'])
                 user.save()
                 web_user_form.save()
 
